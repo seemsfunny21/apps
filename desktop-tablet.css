@@ -2,7 +2,7 @@
 @media(min-width:900px){
   body.desktop-premium,
   body.desktop-premium[data-sidebar="collapsed"]{
-    --ds-sidebar:clamp(62px,5vw,110px);
+    --ds-sidebar:clamp(70px,5vw,210px);
     grid-template-columns:var(--ds-sidebar) minmax(0,1fr);
     grid-template-rows:56px minmax(0,1fr);
   }
@@ -16,7 +16,7 @@
     width:100%;min-height:45px;height:48px;padding:0;
     justify-content:center;flex:0 0 auto;
   }
-  body.desktop-premium .desktop-logo{width:42px;height:42px;flex-basis:42px}
+  body.desktop-premium .desktop-logo{width:clamp(42px,2.65vw,70px);height:clamp(42px,2.65vw,70px);flex-basis:clamp(42px,2.65vw,70px)}
   body.desktop-premium .desktop-brand-copy,
   body.desktop-premium .desktop-nav-label,
   body.desktop-premium .desktop-sidefoot-label,
@@ -34,13 +34,13 @@
   body.desktop-premium .desktop-overview,
   body.desktop-premium[data-sidebar="collapsed"] .desktop-navbutton,
   body.desktop-premium[data-sidebar="collapsed"] .desktop-overview{
-    width:100%;height:51px;min-height:51px;
+    width:100%;height:clamp(51px,5.5dvh,90px);min-height:clamp(51px,5.5dvh,90px);
     padding:10px 0;gap:0;justify-content:center;
     border-radius:12px;
   }
   body.desktop-premium .desktop-navbutton svg,
   body.desktop-premium .desktop-overview svg{
-    width:25px;height:25px;flex:0 0 25px;
+    width:clamp(25px,1.65vw,44px);height:clamp(25px,1.65vw,44px);flex:0 0 clamp(25px,1.65vw,44px);
   }
   body.desktop-premium .desktop-navbutton[aria-current="page"]::after,
   body.desktop-premium .desktop-overview[aria-current="page"]::after{
@@ -51,13 +51,13 @@
     width:68%;margin:0 auto 3px;height:1px;
   }
   body.desktop-premium .desktop-topbar{
-    min-height:56px;max-height:56px;
+    min-height:clamp(56px,3.6dvh,96px);max-height:clamp(56px,3.6dvh,96px);
     padding:5px 14px;gap:10px;
   }
-  body.desktop-premium .desktop-heading strong{font-size:16px}
-  body.desktop-premium .desktop-top-appicon{width:37px;height:37px;flex-basis:37px}
+  body.desktop-premium .desktop-heading strong{font-size:clamp(16px,1.1vw,28px)}
+  body.desktop-premium .desktop-top-appicon{width:clamp(37px,2.1vw,64px);height:clamp(37px,2.1vw,64px);flex-basis:clamp(37px,2.1vw,64px)}
   body.desktop-premium .desktop-top-appicon svg{width:22px;height:22px}
-  body.desktop-premium .desktop-action{min-height:33px}
+  body.desktop-premium .desktop-action{min-height:clamp(33px,2.2vw,58px)}
   body.desktop-premium>.dashboard{
     padding:5px;gap:6px;min-width:0;
     background:radial-gradient(ellipse at 50% 0,rgba(24,77,133,.11),transparent 79%);
@@ -113,4 +113,66 @@
 }
 @media(max-width:899px){
   .tablet-zoom-badge{display:none!important}
+}
+
+/* Automatic TV-friendly header scale and manual zoom toolbar. */
+@media(min-width:900px){
+  body.desktop-premium .desktop-topbar{
+    min-width:0;
+  }
+  body.desktop-premium .desktop-heading small{
+    font-size:clamp(10px,.62vw,17px);
+  }
+  body.desktop-premium .desktop-action{
+    font-size:clamp(11px,.72vw,18px);
+    border-radius:clamp(9px,.55vw,16px);
+  }
+  body.desktop-premium .desktop-action svg{
+    width:clamp(16px,1vw,24px);
+    height:clamp(16px,1vw,24px);
+    flex-basis:clamp(16px,1vw,24px);
+  }
+  .tablet-zoom-control{
+    display:inline-flex;align-items:center;gap:5px;
+    flex:0 0 auto;
+    padding:3px 5px;
+    border-radius:12px;
+    border:1px solid rgba(126,194,248,.44);
+    background:rgba(10,39,73,.9);
+    box-shadow:inset 0 1px rgba(240,251,255,.05);
+  }
+  .tablet-zoom-control button{
+    flex:0 0 auto;min-width:35px;min-height:32px;
+    padding:5px 9px;display:grid;place-items:center;
+    background:transparent;color:#cae7fc;border:1px solid transparent;
+    border-radius:9px;font-weight:800;font-size:14px;cursor:pointer;
+  }
+  .tablet-zoom-control button:hover{
+    background:rgba(59,130,191,.38);
+    border-color:rgba(133,199,251,.42);
+    color:white;
+  }
+  .tablet-zoom-control button[aria-pressed="true"]{
+    background:linear-gradient(135deg,#2a75ad,#1d527e);
+    color:#fff;border-color:rgba(164,220,255,.67);
+  }
+  .tablet-zoom-control .tablet-zoom-value{
+    font-size:12px;font-weight:810;
+    color:#e5f6ff;min-width:43px;text-align:center;
+    font-variant-numeric:tabular-nums;
+  }
+  body.desktop-premium[data-screen="overview"] .tablet-zoom-control{
+    display:none;
+  }
+  body.desktop-premium .desktop-sidebar{
+    border-right-color:rgba(132,196,250,.32);
+  }
+}
+@media(min-width:900px) and (max-width:1280px){
+  .tablet-zoom-control{gap:1px;padding:2px}
+  .tablet-zoom-control button{min-width:30px;padding:4px 6px}
+  .tablet-zoom-control .tablet-zoom-value{min-width:38px}
+}
+@media(max-width:899px){
+  .tablet-zoom-control{display:none!important}
 }
