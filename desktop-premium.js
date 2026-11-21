@@ -49,6 +49,8 @@ function loadState(){
   return {active:order[0],overviewCount:6,sidebar:"expanded",compact:false,order};
 }
 const state=loadState();
+// Old compact-banner and zoom controls are superseded by TV/PC responsive profiles.
+state.compact=false;
 let screen="single",focus=false;
 function persist(){
   try{localStorage.setItem(storeKey,JSON.stringify(state));}catch(_){}
