@@ -176,3 +176,29 @@
 @media(max-width:899px){
   .tablet-zoom-control{display:none!important}
 }
+
+@media(min-width:900px){
+  body.desktop-premium[data-focus="true"],
+  body.desktop-premium[data-focus="true"][data-sidebar="collapsed"]{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  body.desktop-premium .desktop-topbar .tablet-zoom-control + #desktopFocus{
+    margin-left:2px;
+  }
+  body.desktop-premium .desktop-logo svg{
+    width:clamp(23px,1.4vw,36px);
+    height:clamp(23px,1.4vw,36px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .game-text strong{
+    font-size:clamp(14px,.92vw,24px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .game-text small{
+    font-size:clamp(11px,.66vw,18px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .emoji{
+    width:clamp(38px,2.4vw,64px);
+    height:clamp(38px,2.4vw,64px);
+    flex-basis:clamp(38px,2.4vw,64px);
+    font-size:clamp(23px,1.6vw,40px);
+  }
+}
