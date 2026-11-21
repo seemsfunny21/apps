@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#071426">
-<meta name="description" content="Premium desktop Apps: 2, 4 ή 6 εφαρμογές ταυτόχρονα, με άμεση εναλλαγή και αποθηκευμένη διάταξη.">
+<meta name="description" content="Apps Desktop Premium: μία μεγάλη εφαρμογή με αριστερό μενού, άμεση εναλλαγή και προαιρετική επισκόπηση 2, 4 ή 6 εφαρμογών.">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
-<title>Apps · Όλες οι εφαρμογές</title>
+<title>MY APPS · Desktop Premium</title>
 <style>
 :root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color-scheme:dark;--bg:#061326;--fg:#f3faff;--panel:#0a1f37;--edge:#467cae;--hi:#88ceff}
 *{box-sizing:border-box}
@@ -150,9 +150,9 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
 }
 @media(max-width:899px){.dashboard{height:auto;min-height:100dvh}}
 </style>
-<link rel="stylesheet" href="./workspace.css?v=1">
+<link rel="stylesheet" href="./desktop-premium.css?v=1">
 </head>
-<body data-layout="two" data-compact="false">
+<body class="desktop-premium" data-screen="single" data-count="6" data-sidebar="expanded" data-focus="false" data-compact="false">
 <main class="dashboard" aria-label="Έξι εφαρμογές σε μία οθόνη υπολογιστή">
   <p class="desktop-hint">Η προβολή αυτή είναι σχεδιασμένη για υπολογιστή. Για κινητό: <a href="https://seemsfunny21.github.io/applications/">Applications</a>.</p>
   <section class="pane" id="pane-voltes" aria-label="Ποδηλασία">
@@ -162,7 +162,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     </div></div>
     <div class="pane-frame"><div class="pane-loading">Φόρτωση Ποδηλασίας…</div><iframe loading="eager" title="Ποδηλασία" src="https://seemsfunny21.github.io/voltes/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
   </section>
-  <section class="pane" id="pane-douleia" aria-label="Δρομολόγια">
+  <section class="pane is-selected" id="pane-douleia" aria-label="Δρομολόγια">
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6.5" width="12" height="10.5" rx="1.5"/><path d="M14 10h4l3.5 3.5V17H14M6 17.5a2 2 0 1 0 4 0M16.5 17.5a2 2 0 1 0 4 0"/></svg></span><span class="pane-name"><strong>Δρομολόγια</strong><small>Οδηγοί και χρόνοι</small></span></div><div class="pane-tools">
       <a class="tool tool-open" href="https://seemsfunny21.github.io/douleia/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Δρομολογίων σε νέα καρτέλα" aria-label="Άνοιγμα Δρομολογίων σε νέα καρτέλα"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h6v6M19 5l-9 9M19 13v6H5V5h6"/></svg></a>
       <button class="tool tool-zoom" type="button" data-zoom="douleia" title="Μεγέθυνση Δρομολογίων" aria-label="Μεγέθυνση Δρομολογίων" aria-pressed="false"><svg class="zoom-expand" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H3v5M16 3h5v5M3 16v5h5M21 16v5h-5"/></svg><svg class="zoom-collapse" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h5V3M21 8h-5V3M3 16h5v5M21 16h-5v5"/></svg></button>
@@ -299,6 +299,6 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   $("gamesBack").addEventListener("click",closeGame);
 })();
 </script>
-<script src="./workspace.js?v=1"></script>
+<script src="./desktop-premium.js?v=1"></script>
 </body>
 </html>
