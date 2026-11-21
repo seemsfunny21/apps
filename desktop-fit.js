@@ -4,6 +4,7 @@
 const gameBanner = [
   ".suite-game-banner,body>.suite-game-banner{",
     "box-sizing:border-box!important;",
+    "display:none!important;",
     "width:min(calc(100% - 22px),660px)!important;",
     "max-width:660px!important;",
     "height:190px!important;max-height:190px!important;",
@@ -15,18 +16,19 @@ const gameBanner = [
 ].join("");
 const desktopFit={
   voltes:[
-    ".shell{max-width:1160px!important;width:100%!important;}",
+    ".shell{max-width:1260px!important;width:100%!important;}",
+    ".shell>header{display:none!important;}",
     ".shell>header{max-width:1050px;margin-left:auto;margin-right:auto;}"
   ].join(""),
   douleia:[
-    ".wrap{max-width:1240px!important;width:100%!important;",
+    ".wrap{max-width:1380px!important;width:100%!important;",
       "padding-left:20px!important;padding-right:20px!important;}",
-    ".routes-hero-head{max-width:790px!important;}",
+    ".routes-hero-head{display:none!important;}",
     ".route-grid{max-width:1100px;margin-left:auto;margin-right:auto;}"
   ].join(""),
   reminder:[
     ".premium-glass .content-area{",
-      "width:min(100%,1280px)!important;max-width:1280px!important;",
+      "width:min(100%,1400px)!important;max-width:1400px!important;",
       "height:100dvh!important;padding:17px 20px 20px!important;margin:0 auto!important;}",
     ".premium-glass .screen-split{display:grid!important;",
       "grid-template-columns:minmax(0,2fr) minmax(0,3fr)!important;",
@@ -34,30 +36,32 @@ const desktopFit={
       "height:100%!important;gap:15px!important;align-items:stretch!important;}",
     ".premium-glass .wizard-half,.premium-glass .list-half{",
       "min-width:0!important;min-height:0!important;}",
-    ".premium-glass .reminder-hero-art{height:145px!important;",
+    ".premium-glass .reminder-hero-art{display:none!important;height:145px!important;",
       "max-height:145px!important;object-fit:contain!important;}"
   ].join(""),
   parking:[
-    ".app{width:min(calc(100% - 30px),620px)!important;",
-      "max-width:620px!important;margin:0 auto!important;}",
+    ".app{width:min(calc(100% - 30px),760px)!important;",
+      "max-width:760px!important;margin:0 auto!important;}",
+    ".app>.hero{display:none!important;}",
     ".parking-hero-art{width:100%!important;height:174px!important;object-fit:contain!important;}"
   ].join(""),
   kairos:[
-    ".app-wrap{width:min(100%,950px)!important;max-width:950px!important;",
+    ".app-wrap{width:min(100%,1050px)!important;max-width:1050px!important;",
+    ".suite-banner{display:none!important;}",
       "padding-left:22px!important;padding-right:22px!important;}",
     ".suite-banner{width:min(100%,740px)!important;",
       "height:190px!important;max-height:190px!important;}",
     ".suite-banner img{width:100%!important;height:100%!important;object-fit:contain!important;}"
   ].join(""),
   sudokufunny:[
-    ".app-shell>.hero{width:min(100%,660px)!important;",
+    ".app-shell>.hero{display:none!important;width:min(100%,660px)!important;" ,
       "max-width:660px!important;height:185px!important;",
       "margin:0 auto 10px!important;flex:0 0 auto!important;}",
     ".app-shell>.hero .sudoku-hero-art{width:100%!important;",
       "height:100%!important;object-fit:contain!important;}"
   ].join(""),
   reversifunny:[
-    ".app-shell>.hero{width:min(100%,660px)!important;",
+    ".app-shell>.hero{display:none!important;width:min(100%,660px)!important;" ,
       "max-width:660px!important;height:185px!important;",
       "margin:0 auto 10px!important;flex:0 0 auto!important;}",
     ".app-shell>.hero .reversi-hero-art{width:100%!important;",
