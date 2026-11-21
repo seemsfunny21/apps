@@ -1,0 +1,45 @@
+/* MY APPS desktop-only fullscreen game workspace — mobile PWA unaffected */
+@media (min-width:900px) {
+  body.desktop-premium,
+  body.desktop-premium[data-sidebar="collapsed"],
+  body.desktop-premium[data-display-profile="tv"],
+  body.desktop-premium[data-display-profile="pc"],
+  body.desktop-premium[data-focus="true"] {
+    grid-template-rows:minmax(0,1fr)!important;
+    height:100dvh!important;
+    min-height:0!important;
+  }
+  body.desktop-premium .desktop-topbar {
+    display:none!important;
+  }
+  body.desktop-premium .desktop-sidebar {
+    grid-row:1!important;
+    min-height:0!important;
+    height:100%!important;
+  }
+  body.desktop-premium>.dashboard {
+    grid-row:1!important;
+    min-height:0!important;
+    height:100%!important;
+    max-height:100%!important;
+    padding:4px!important;
+  }
+  body.desktop-premium[data-screen="single"]>.dashboard>.pane.is-selected {
+    height:100%!important;
+    min-height:0!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .pane-frame {
+    height:100%!important;
+    min-height:0!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games iframe {
+    width:100%!important;
+    height:100%!important;
+    min-height:0!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-picker{
+    max-width:1280px!important;
+    min-height:0!important;
+    height:100%!important;
+  }
+}
