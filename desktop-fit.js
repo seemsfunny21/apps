@@ -103,7 +103,7 @@ function apply(frame){
     if(!style){
       style=doc.createElement("style");style.id=STYLE_ID;const compact=doc.getElementById("desktop-premium-banner-size");if(compact)doc.head.insertBefore(style,compact);else doc.head.appendChild(style);
     }
-    style.textContent="@media(min-width:900px){"+rules+"}";
+    style.textContent=window.innerWidth>=900?rules:"";
   }catch(_){
     // Never interfere with an iframe if the browser disallows document access.
   }
@@ -115,6 +115,7 @@ function watch(frame){
   apply(frame);
 }
 dashboard.querySelectorAll("iframe").forEach(watch);
+window.addEventListener("resize",()=>dashboard.querySelectorAll("iframe").forEach(apply),{passive:true});
 if(gamesHost){
   const observer=new MutationObserver(()=>{
     gamesHost.querySelectorAll("iframe").forEach(watch);
