@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="Οι εφαρμογές μου σε μία οθόνη υπολογιστή — 3 στήλες, 2 σειρές, όλες ταυτόχρονα.">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>Apps · Όλες οι εφαρμογές</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color-scheme:dark;--bg:#061326;--fg:#f3faff;--panel:#0a1f37;--edge:#467cae;--hi:#88ceff}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--fg)}
+button,a{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2px}
+.dashboard{width:100%;height:100vh;height:100dvh;padding:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));gap:8px;overflow:hidden;background:radial-gradient(ellipse at 50% 0,#123257 0,#061326 74%)}
+.pane{display:grid;grid-template-rows:40px minmax(0,1fr);min-width:0;min-height:0;overflow:hidden;position:relative;background:var(--panel);border:1px solid rgba(99,172,242,.43);border-radius:15px;box-shadow:0 7px 20px #0006,0 0 0 1px #1c4f8020}
+.pane-bar{display:flex;align-items:center;justify-content:space-between;min-height:40px;min-width:0;padding:4px 8px 4px 13px;gap:8px;border-bottom:1px solid rgba(112,186,250,.28);background:linear-gradient(140deg,#163e68,#0d294a);position:relative;z-index:5}
+.pane-label{display:flex;align-items:center;gap:7px;min-width:0}
+.pane-label:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:#60d4ff;box-shadow:0 0 9px #35baff9c}
+.pane-label strong{font-size:13px;font-weight:780;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pane-tools{display:flex;align-items:center;gap:5px;flex:none}
+.tool{display:inline-grid;place-items:center;width:30px;height:29px;padding:0;line-height:1;color:#d2ecff;border:1px solid rgba(123,190,251,.3);border-radius:8px;background:#194571;text-decoration:none;transition:background .14s,border-color .14s}
+.tool:hover{background:#27679c;border-color:#8ccfff}
+.tool[hidden]{display:none!important}
+.tool.is-back{width:auto;padding:0 9px;font-size:11px;font-weight:780}
+.tool-zoom{font-size:21px}
+.tool-open{font-size:16px}
+.pane-frame{min-width:0;min-height:0;position:relative;overflow:hidden;background:#07182e}
+.pane-frame iframe{display:block;width:100%;height:100%;border:0;background:#071426}
+.pane-loading{position:absolute;inset:0;z-index:3;display:grid;place-items:center;gap:10px;padding:20px;color:#abcfee;background:#081b33;font-size:12px;text-align:center;pointer-events:none}
+.pane-loading[hidden]{display:none!important}
+.pane-loading:before{content:"";width:25px;height:25px;border:3px solid #285a85;border-top-color:#90d8ff;border-radius:50%;animation:spin .75s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pane.is-maximized{position:fixed;inset:0;z-index:1000;border-radius:0;border:2px solid #70bdff;box-shadow:0 0 0 200vmax #010817e0}
+.pane.is-maximized .pane-bar{min-height:46px}
+.pane.is-maximized{grid-template-rows:46px minmax(0,1fr)}
+.pane.is-maximized .tool-zoom{background:#3175aa;color:#fff}
+.games-picker{height:100%;overflow-y:auto;overscroll-behavior:contain;padding:9px;background:radial-gradient(ellipse at 50% 0,#173e68 0,#071526 85%)}
+.games-art{display:block;max-width:100%;width:100%;height:clamp(65px,11dvh,108px);object-fit:cover;object-position:center;border-radius:11px;border:1px solid #75baff63;margin:0 0 9px;box-shadow:0 8px 20px #0006}
+.games-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+.game-choice{min-width:0;min-height:61px;border-radius:10px;display:flex;align-items:center;gap:9px;text-align:left;padding:7px 10px;border:1px solid #4c83b89c;background:linear-gradient(145deg,#16406c,#102b4b);color:#f3faff}
+.game-choice:hover{background:#255a86;border-color:#8acbff}
+.game-choice .emoji{width:29px;flex:0 0 29px;font-size:23px;text-align:center}
+.game-choice .game-text{min-width:0;line-height:1.2}
+.game-choice .game-text strong{font-size:12px;display:block;overflow-wrap:anywhere}
+.game-choice .game-text small{display:block;font-size:10px;color:#b5d6f0;margin-top:3px}
+.games-notice{text-align:center;font-size:10px;line-height:1.4;color:#a9cee8;margin:9px 0 2px}
+.game-iframe[hidden],.games-picker[hidden]{display:none!important}
+.desktop-hint{display:none}
+@media(min-width:1900px){.game-choice{min-height:67px}.game-choice .game-text strong{font-size:13px}}
+@media(max-width:1100px){.pane-label strong{font-size:12px}.tool{width:28px;height:28px}.pane-bar{padding-left:8px}}
+@media(max-width:899px){
+  html,body{height:auto;min-height:100%;overflow:auto}
+  .dashboard{height:auto;min-height:100dvh;overflow:visible;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(380px,52dvh)}
+  .desktop-hint{display:block;grid-column:1/-1;text-align:center;font-size:12px;color:#bfdfff;margin:2px}
+}
+@media(max-width:620px){
+  .dashboard{grid-template-columns:1fr;grid-auto-rows:minmax(380px,65dvh)}
+  .desktop-hint{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="dashboard" aria-label="Έξι εφαρμογές σε μία οθόνη υπολογιστή">
+  <p class="desktop-hint">Η προβολή αυτή είναι σχεδιασμένη για υπολογιστή. Για κινητό: <a href="https://seemsfunny21.github.io/applications/">Applications</a>.</p>
+  <section class="pane" id="pane-voltes" aria-label="Ποδηλασία">
+    <div class="pane-bar"><div class="pane-label"><strong>Ποδηλασία</strong></div><div class="pane-tools">
+      <a class="tool tool-open" href="https://seemsfunny21.github.io/voltes/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Ποδηλασίας σε νέα καρτέλα" aria-label="Άνοιγμα Ποδηλασίας σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="voltes" title="Μεγέθυνση Ποδηλασίας" aria-label="Μεγέθυνση Ποδηλασίας" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Ποδηλασίας…</div><iframe loading="eager" title="Ποδηλασία" src="https://seemsfunny21.github.io/voltes/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
+  </section>
+  <section class="pane" id="pane-douleia" aria-label="Δρομολόγια">
+    <div class="pane-bar"><div class="pane-label"><strong>Δρομολόγια</strong></div><div class="pane-tools">
+      <a class="tool tool-open" href="https://seemsfunny21.github.io/douleia/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Δρομολογίων σε νέα καρτέλα" aria-label="Άνοιγμα Δρομολογίων σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="douleia" title="Μεγέθυνση Δρομολογίων" aria-label="Μεγέθυνση Δρομολογίων" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Δρομολογίων…</div><iframe loading="eager" title="Δρομολόγια" src="https://seemsfunny21.github.io/douleia/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
+  </section>
+  <section class="pane" id="pane-reminder" aria-label="Υπενθυμίσεις">
+    <div class="pane-bar"><div class="pane-label"><strong>Υπενθυμίσεις</strong></div><div class="pane-tools">
+      <a class="tool tool-open" href="https://seemsfunny21.github.io/reminder/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Υπενθυμίσεων σε νέα καρτέλα" aria-label="Άνοιγμα Υπενθυμίσεων σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="reminder" title="Μεγέθυνση Υπενθυμίσεων" aria-label="Μεγέθυνση Υπενθυμίσεων" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Υπενθυμίσεων…</div><iframe loading="eager" title="Υπενθυμίσεις" src="https://seemsfunny21.github.io/reminder/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
+  </section>
+  <section class="pane" id="pane-parking" aria-label="Parking">
+    <div class="pane-bar"><div class="pane-label"><strong>Parking</strong></div><div class="pane-tools">
+      <a class="tool tool-open" href="https://seemsfunny21.github.io/Parking/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Parking σε νέα καρτέλα" aria-label="Άνοιγμα Parking σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="parking" title="Μεγέθυνση Parking" aria-label="Μεγέθυνση Parking" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Parking…</div><iframe loading="eager" title="Parking" src="https://seemsfunny21.github.io/Parking/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
+  </section>
+  <section class="pane" id="pane-kairos" aria-label="Καιρός">
+    <div class="pane-bar"><div class="pane-label"><strong>Καιρός</strong></div><div class="pane-tools">
+      <a class="tool tool-open" href="https://seemsfunny21.github.io/applications/kairos/" target="_blank" rel="noopener noreferrer" title="Άνοιγμα Καιρού σε νέα καρτέλα" aria-label="Άνοιγμα Καιρού σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="kairos" title="Μεγέθυνση Καιρού" aria-label="Μεγέθυνση Καιρού" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Καιρού…</div><iframe loading="eager" title="Καιρός" src="https://seemsfunny21.github.io/applications/kairos/" allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen"></iframe></div>
+  </section>
+  <section class="pane" id="pane-games" aria-label="Παιχνίδια">
+    <div class="pane-bar"><div class="pane-label"><strong id="gamesTitle">Παιχνίδια</strong></div><div class="pane-tools">
+      <button class="tool is-back" type="button" id="gamesBack" title="Επιστροφή στην επιλογή παιχνιδιών" hidden>Παιχνίδια</button>
+      <a class="tool tool-open" id="gamesOpen" href="https://seemsfunny21.github.io/applications/?app=games" target="_blank" rel="noopener noreferrer" title="Άνοιγμα παιχνιδιών σε νέα καρτέλα" aria-label="Άνοιγμα παιχνιδιών σε νέα καρτέλα">↗</a>
+      <button class="tool tool-zoom" type="button" data-zoom="games" title="Μεγέθυνση Παιχνιδιών" aria-label="Μεγέθυνση Παιχνιδιών" aria-pressed="false">⛶</button>
+    </div></div>
+    <div class="pane-frame" id="gamesFrame">
+      <div class="games-picker" id="gamesPicker">
+        <img class="games-art" src="./games-hero.svg" width="900" height="300" alt="Παιχνίδια" decoding="async">
+        <div class="games-list" id="gamesList">
+          <button type="button" class="game-choice" data-game="sudokufunny"><span class="emoji">▦</span><span class="game-text"><strong>SudokuFunny</strong><small>Sudoku 9×9</small></span></button>
+          <button type="button" class="game-choice" data-game="reversifunny"><span class="emoji">◉</span><span class="game-text"><strong>ReversiFunny</strong><small>Reversi 8×8</small></span></button>
+          <button type="button" class="game-choice" data-game="minesweeperfunny"><span class="emoji">💣</span><span class="game-text"><strong>Minesweeper</strong><small>Ναρκαλιευτής</small></span></button>
+          <button type="button" class="game-choice" data-game="solitairefunny"><span class="emoji">♠</span><span class="game-text"><strong>Solitaire</strong><small>Πασιέντζα</small></span></button>
+          <button type="button" class="game-choice" data-game="chessfunny"><span class="emoji">♞</span><span class="game-text"><strong>ChessFunny</strong><small>Σκάκι</small></span></button>
+          <button type="button" class="game-choice" data-game="tavlifunny"><span class="emoji">🎲</span><span class="game-text"><strong>TavliFunny</strong><small>Τάβλι</small></span></button>
+          <button type="button" class="game-choice" data-game="tichufunny"><span class="emoji">🃏</span><span class="game-text"><strong>TichuFunny</strong><small>Τίτσου</small></span></button>
+          <button type="button" class="game-choice" data-game="tichufunnyonline"><span class="emoji">🌐</span><span class="game-text"><strong>Tichu Online</strong><small>Με φίλους</small></span></button>
+          <button type="button" class="game-choice" data-game="monopolyfunny"><span class="emoji">🏠</span><span class="game-text"><strong>Monopoly</strong><small>Ακίνητα</small></span></button>
+          <button type="button" class="game-choice" data-game="quizfunny"><span class="emoji">🏆</span><span class="game-text"><strong>QuizFunny</strong><small>Ερωτήσεις</small></span></button>
+        </div>
+        <p class="games-notice">Διάλεξε παιχνίδι για να ανοίξει εδώ, χωρίς να κλείσουν οι υπόλοιπες εφαρμογές.</p>
+      </div>
+      <div class="pane-loading" id="gamesLoading" hidden>Φόρτωση παιχνιδιού…</div>
+    </div>
+  </section>
+</main>
+<script>
+(() => {
+  "use strict";
+  const $=id=>document.getElementById(id);
+  const gameInfo=Object.freeze({
+    sudokufunny:{name:"SudokuFunny",url:"https://seemsfunny21.github.io/sudokufunny/"},
+    reversifunny:{name:"ReversiFunny",url:"https://seemsfunny21.github.io/reversifunny/"},
+    minesweeperfunny:{name:"MinesweeperFunny",url:"https://seemsfunny21.github.io/minesweeperfunny/"},
+    solitairefunny:{name:"SolitaireFunny",url:"https://seemsfunny21.github.io/solitairefunny/"},
+    chessfunny:{name:"ChessFunny",url:"https://seemsfunny21.github.io/chessfunny/"},
+    tavlifunny:{name:"TavliFunny",url:"https://seemsfunny21.github.io/tavlifunny/"},
+    tichufunny:{name:"TichuFunny",url:"https://seemsfunny21.github.io/tichufunny/"},
+    tichufunnyonline:{name:"TichuFunny Online",url:"https://seemsfunny21.github.io/tichufunnyonline/"},
+    monopolyfunny:{name:"MonopolyFunny",url:"https://seemsfunny21.github.io/monopolyfunny/"},
+    quizfunny:{name:"QuizFunny",url:"https://seemsfunny21.github.io/quizfunny/"}
+  });
+  const headerFrames=[...document.querySelectorAll(".pane:not(#pane-games) iframe")];
+  for(const frame of headerFrames){
+    frame.addEventListener("load",()=>{
+      const loading=frame.closest(".pane-frame").querySelector(".pane-loading");
+      if(loading)loading.hidden=true;
+    });
+  }
+  function normalizeZoom(){
+    for(const pane of document.querySelectorAll(".pane.is-maximized")){
+      pane.classList.remove("is-maximized");
+      const button=pane.querySelector("[data-zoom]");
+      if(button){button.setAttribute("aria-pressed","false");button.textContent="⛶";button.title="Μεγέθυνση";}
+    }
+  }
+  document.addEventListener("click",event=>{
+    const button=event.target.closest("[data-zoom]");
+    if(!button)return;
+    const pane=button.closest(".pane");
+    const shouldMaximize=!pane.classList.contains("is-maximized");
+    normalizeZoom();
+    if(shouldMaximize){
+      pane.classList.add("is-maximized");
+      button.setAttribute("aria-pressed","true");
+      button.textContent="⊠";
+      button.title="Επιστροφή στη διάταξη 3×2";
+    }
+  });
+  document.addEventListener("keydown",event=>{
+    if(event.key==="Escape" && document.querySelector(".pane.is-maximized"))normalizeZoom();
+  });
+  let gameFrame=null;
+  function closeGame(){
+    if(gameFrame){gameFrame.remove();gameFrame=null;}
+    $("gamesPicker").hidden=false;
+    $("gamesBack").hidden=true;
+    $("gamesLoading").hidden=true;
+    $("gamesTitle").textContent="Παιχνίδια";
+    $("gamesOpen").href="https://seemsfunny21.github.io/applications/?app=games";
+  }
+  function launchGame(key){
+    const game=gameInfo[key];
+    if(!game)return;
+    closeGame();
+    $("gamesPicker").hidden=true;
+    $("gamesBack").hidden=false;
+    $("gamesTitle").textContent=game.name;
+    $("gamesOpen").href=game.url;
+    $("gamesLoading").hidden=false;
+    const frame=document.createElement("iframe");
+    frame.className="game-iframe";
+    frame.title=game.name;
+    frame.loading="eager";
+    frame.allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen";
+    frame.referrerPolicy="strict-origin-when-cross-origin";
+    frame.addEventListener("load",()=>{$("gamesLoading").hidden=true;},{once:true});
+    frame.src=game.url;
+    $("gamesFrame").append(frame);
+    gameFrame=frame;
+  }
+  $("gamesList").addEventListener("click",event=>{
+    const button=event.target.closest("[data-game]");
+    if(button)launchGame(button.dataset.game);
+  });
+  $("gamesBack").addEventListener("click",closeGame);
+})();
+</script>
+</body>
+</html>
