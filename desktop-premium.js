@@ -219,6 +219,11 @@ function render(){
 function activate(id){
   if(!paneById[id])return;
   resetOldZoom();
+  // Selecting Games from the sidebar always returns to the complete game list.
+  if(id==="games"){
+    const gameBack=$("gamesBack");
+    if(gameBack&&!gameBack.hidden)gameBack.click();
+  }
   state.active=id;screen="single";render();
 }
 for(const button of side.querySelectorAll("[data-select-app]")){
