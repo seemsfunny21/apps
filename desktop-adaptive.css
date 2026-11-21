@@ -40,6 +40,9 @@
     max-width:100%!important;max-height:100%!important;
     transform:none!important;transform-origin:initial!important;
   }
+  body.desktop-premium[data-display-profile="tv"]{
+    grid-template-rows:clamp(58px,5.4dvh,76px) minmax(0,1fr)!important;
+  }
   body.desktop-premium[data-display-profile="tv"] .desktop-topbar{
     min-height:clamp(58px,5.4dvh,76px);
     max-height:clamp(58px,5.4dvh,76px);
