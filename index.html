@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="dark">
 <meta name="theme-color" content="#071426">
-<meta name="description" content="Οι εφαρμογές μου σε μία οθόνη υπολογιστή — 3 στήλες, 2 σειρές, όλες ταυτόχρονα.">
+<meta name="description" content="Premium desktop Apps: 2, 4 ή 6 εφαρμογές ταυτόχρονα, με άμεση εναλλαγή και αποθηκευμένη διάταξη.">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
 <title>Apps · Όλες οι εφαρμογές</title>
 <style>
@@ -150,8 +150,9 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
 }
 @media(max-width:899px){.dashboard{height:auto;min-height:100dvh}}
 </style>
+<link rel="stylesheet" href="./workspace.css?v=1">
 </head>
-<body>
+<body data-layout="two" data-compact="false">
 <main class="dashboard" aria-label="Έξι εφαρμογές σε μία οθόνη υπολογιστή">
   <p class="desktop-hint">Η προβολή αυτή είναι σχεδιασμένη για υπολογιστή. Για κινητό: <a href="https://seemsfunny21.github.io/applications/">Applications</a>.</p>
   <section class="pane" id="pane-voltes" aria-label="Ποδηλασία">
@@ -298,5 +299,6 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   $("gamesBack").addEventListener("click",closeGame);
 })();
 </script>
+<script src="./workspace.js?v=1"></script>
 </body>
 </html>
