@@ -1,0 +1,129 @@
+/* Responsive desktop workspace v2: real layouts instead of iframe transform zoom. */
+@media(min-width:900px){
+  body.desktop-premium,
+  body.desktop-premium[data-sidebar="collapsed"]{
+    --ds-sidebar:clamp(70px,5vw,118px);
+  }
+  body.desktop-premium>.dashboard{padding:7px;gap:7px}
+  body.desktop-premium .desktop-sidebar .desktop-navbutton{
+    border-radius:14px;
+  }
+  body.desktop-premium .desktop-topbar{
+    padding:6px clamp(10px,.9vw,22px);
+    gap:clamp(7px,.65vw,14px);
+  }
+  .desktop-display-toggle{
+    flex:0 0 auto;display:flex;align-items:center;gap:4px;
+    background:rgba(9,36,66,.85);
+    border:1px solid rgba(129,188,241,.40);
+    border-radius:11px;padding:3px;
+  }
+  .desktop-display-toggle button{
+    cursor:pointer;display:flex;gap:6px;align-items:center;justify-content:center;
+    background:transparent;color:#b7d6ed;
+    border:1px solid transparent;border-radius:8px;
+    min-width:51px;min-height:32px;padding:5px 10px;
+    font:760 12px/1.2 system-ui,sans-serif;
+  }
+  .desktop-display-toggle button:hover{background:#234f7a;color:#fff}
+  .desktop-display-toggle button[aria-pressed="true"]{
+    color:#fff;background:linear-gradient(145deg,#357fba,#24537d);
+    border-color:rgba(156,217,255,.7);
+    box-shadow:0 2px 10px #010e2670;
+  }
+  .desktop-display-toggle button:focus-visible{outline:2px solid #a2e4ff;outline-offset:2px}
+  .desktop-display-toggle svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  /* The old global 158% zoom control is deliberately retired. */
+  .tablet-zoom-control{display:none!important}
+  body.desktop-premium .pane-frame iframe{
+    width:100%!important;height:100%!important;
+    max-width:100%!important;max-height:100%!important;
+    transform:none!important;transform-origin:initial!important;
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-topbar{
+    min-height:clamp(58px,5.4dvh,76px);
+    max-height:clamp(58px,5.4dvh,76px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-heading strong{
+    font-size:clamp(18px,1.22vw,26px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-heading small{
+    font-size:clamp(10px,.7vw,14px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-action{
+    min-height:40px;font-size:clamp(12px,.85vw,17px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-navbutton,
+  body.desktop-premium[data-display-profile="tv"] .desktop-overview{
+    min-height:clamp(56px,6.2dvh,83px);
+    height:clamp(56px,6.2dvh,83px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-navbutton svg,
+  body.desktop-premium[data-display-profile="tv"] .desktop-overview svg{
+    width:clamp(26px,1.65vw,39px);
+    height:clamp(26px,1.65vw,39px);
+    flex-basis:clamp(26px,1.65vw,39px);
+  }
+  body.desktop-premium[data-display-profile="tv"] .desktop-display-toggle button{
+    font-size:14px;min-height:36px;min-width:58px;
+  }
+  /* Games library: fill the usable vertical workspace with touch/TV-sized cards. */
+  body.desktop-premium[data-screen="single"] #pane-games .games-picker{
+    width:min(100%,1320px)!important;
+    max-width:1320px!important;
+    height:100%;padding:15px 20px 22px!important;
+    display:flex;flex-direction:column;justify-content:center;
+    align-items:stretch;margin:0 auto!important;
+    background:transparent;overflow-y:auto;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-art{
+    display:none!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-list{
+    width:100%!important;max-width:1250px!important;
+    margin:0 auto!important;display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    gap:clamp(9px,1.4dvh,16px)!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice{
+    min-height:clamp(64px,8dvh,92px)!important;
+    padding:clamp(9px,1.3dvh,15px) clamp(12px,1.1vw,19px)!important;
+    border-radius:14px;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .emoji{
+    width:clamp(38px,2.8vw,57px);height:clamp(38px,2.8vw,57px);
+    flex-basis:clamp(38px,2.8vw,57px);
+    font-size:clamp(23px,1.6vw,35px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .game-text strong{
+    font-size:clamp(14px,1.05vw,20px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice .game-text small{
+    font-size:clamp(11px,.75vw,15px);
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-notice{
+    font-size:clamp(11px,.72vw,14px);
+    margin:12px auto 0;max-width:1000px;
+  }
+  body.desktop-premium[data-display-profile="pc"] #pane-games .games-picker{
+    max-width:1100px!important;
+  }
+  body.desktop-premium[data-display-profile="pc"] #pane-games .game-choice{
+    min-height:clamp(58px,7dvh,76px)!important;
+  }
+}
+@media(min-width:900px) and (max-height:690px){
+  body.desktop-premium[data-screen="single"] #pane-games .games-picker{
+    justify-content:flex-start!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice{
+    min-height:58px!important;padding:7px 10px!important;
+  }
+}
+@media(min-width:900px) and (max-width:1150px){
+  .desktop-display-toggle button{min-width:40px;padding:5px}
+  .desktop-display-toggle button svg{display:none}
+}
+@media(max-width:899px){
+  .desktop-display-toggle{display:none!important}
+}
