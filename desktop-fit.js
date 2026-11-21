@@ -97,7 +97,7 @@ function apply(frame){
     if(!doc?.head)return;
     let style=doc.getElementById(STYLE_ID);
     if(!style){
-      style=doc.createElement("style");style.id=STYLE_ID;doc.head.appendChild(style);
+      style=doc.createElement("style");style.id=STYLE_ID;const compact=doc.getElementById("desktop-premium-banner-size");if(compact)doc.head.insertBefore(style,compact);else doc.head.appendChild(style);
     }
     style.textContent="@media(min-width:900px){"+rules+"}";
   }catch(_){
