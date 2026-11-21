@@ -1,0 +1,116 @@
+/* Desktop Tablet Mode — MY APPS only. The mobile launcher and games are unchanged. */
+@media(min-width:900px){
+  body.desktop-premium,
+  body.desktop-premium[data-sidebar="collapsed"]{
+    --ds-sidebar:clamp(62px,5vw,110px);
+    grid-template-columns:var(--ds-sidebar) minmax(0,1fr);
+    grid-template-rows:56px minmax(0,1fr);
+  }
+  body.desktop-premium .desktop-sidebar,
+  body.desktop-premium[data-sidebar="collapsed"] .desktop-sidebar{
+    width:100%;padding:12px 7px;gap:12px;align-items:center;
+    overflow:hidden;
+  }
+  body.desktop-premium .desktop-brand,
+  body.desktop-premium[data-sidebar="collapsed"] .desktop-brand{
+    width:100%;min-height:45px;height:48px;padding:0;
+    justify-content:center;flex:0 0 auto;
+  }
+  body.desktop-premium .desktop-logo{width:42px;height:42px;flex-basis:42px}
+  body.desktop-premium .desktop-brand-copy,
+  body.desktop-premium .desktop-nav-label,
+  body.desktop-premium .desktop-sidefoot-label,
+  body.desktop-premium .desktop-nav-text,
+  body.desktop-premium .desktop-side-note,
+  body.desktop-premium .desktop-collapse,
+  body.desktop-premium #desktopCompact{
+    display:none!important;
+  }
+  body.desktop-premium .desktop-nav,
+  body.desktop-premium .desktop-side-bottom{
+    width:100%;gap:9px;align-items:center;
+  }
+  body.desktop-premium .desktop-navbutton,
+  body.desktop-premium .desktop-overview,
+  body.desktop-premium[data-sidebar="collapsed"] .desktop-navbutton,
+  body.desktop-premium[data-sidebar="collapsed"] .desktop-overview{
+    width:100%;height:51px;min-height:51px;
+    padding:10px 0;gap:0;justify-content:center;
+    border-radius:12px;
+  }
+  body.desktop-premium .desktop-navbutton svg,
+  body.desktop-premium .desktop-overview svg{
+    width:25px;height:25px;flex:0 0 25px;
+  }
+  body.desktop-premium .desktop-navbutton[aria-current="page"]::after,
+  body.desktop-premium .desktop-overview[aria-current="page"]::after{
+    display:none!important;
+  }
+  body.desktop-premium .desktop-side-bottom{margin-top:auto}
+  body.desktop-premium .desktop-side-divider{
+    width:68%;margin:0 auto 3px;height:1px;
+  }
+  body.desktop-premium .desktop-topbar{
+    min-height:56px;max-height:56px;
+    padding:5px 14px;gap:10px;
+  }
+  body.desktop-premium .desktop-heading strong{font-size:16px}
+  body.desktop-premium .desktop-top-appicon{width:37px;height:37px;flex-basis:37px}
+  body.desktop-premium .desktop-top-appicon svg{width:22px;height:22px}
+  body.desktop-premium .desktop-action{min-height:33px}
+  body.desktop-premium>.dashboard{
+    padding:5px;gap:6px;min-width:0;
+    background:radial-gradient(ellipse at 50% 0,rgba(24,77,133,.11),transparent 79%);
+  }
+  body.desktop-premium[data-screen="single"]>.dashboard>.pane.is-selected{
+    border-radius:12px;border-color:rgba(101,172,240,.28);
+    box-shadow:0 5px 20px #0004;
+  }
+  body.desktop-premium[data-focus="true"]{
+    grid-template-columns:minmax(0,1fr);
+  }
+  body.desktop-premium[data-focus="true"] .desktop-topbar,
+  body.desktop-premium[data-focus="true"]>.dashboard{
+    grid-column:1;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-art{
+    display:none!important;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-picker{
+    width:min(100%,1210px);max-width:1210px;
+    padding:20px 22px 24px;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .games-list{
+    width:100%;max-width:1120px;gap:12px 14px;
+  }
+  body.desktop-premium[data-screen="single"] #pane-games .game-choice{
+    min-height:73px;padding:12px 15px;
+  }
+  .tablet-zoom-badge{
+    display:flex;align-items:center;gap:7px;
+    flex:0 0 auto;white-space:nowrap;
+    color:#b6daef;font-size:11px;font-weight:700;
+    border:1px solid rgba(113,182,239,.3);
+    border-radius:10px;background:rgba(14,44,75,.55);
+    padding:8px 10px;font-variant-numeric:tabular-nums;
+  }
+  .tablet-zoom-badge::before{
+    content:"";width:7px;height:7px;flex:none;border-radius:50%;
+    background:#65cfff;box-shadow:0 0 7px #41aeef8f;
+  }
+  .tablet-zoom-badge[hidden]{display:none!important}
+  body.desktop-premium[data-screen="single"] .pane-frame iframe{
+    /* Tablet scale is applied to iframe's element by desktop-tablet.js. */
+    display:block;max-width:none;max-height:none;
+    transform-origin:top left;
+    will-change:auto;
+  }
+}
+@media(min-width:900px) and (max-width:1220px){
+  body.desktop-premium .desktop-topbar{padding:5px 8px;gap:6px}
+  .tablet-zoom-badge{font-size:10px;padding:7px}
+  body.desktop-premium .desktop-heading strong{font-size:14px}
+}
+@media(max-width:899px){
+  .tablet-zoom-badge{display:none!important}
+}
