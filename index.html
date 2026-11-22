@@ -237,10 +237,9 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     quizfunny:{name:"QuizFunny",url:"https://seemsfunny21.github.io/quizfunny/"}
   });
   // Shared ranking across both /apps/ and /applications/.
-  // The last opened game stays first; all others follow launch counts.
+  // Rank only by number of game launches; ties keep their original order.
   const GAME_LIST=$("gamesList");
   const GAME_USAGE_KEY="applications:game-launch-counts:v1";
-  const LAST_GAME_KEY="applications:last-launched-game:v1";
   function readGameUsage(){
     try{
       const stored=JSON.parse(localStorage.getItem(GAME_USAGE_KEY)||"{}");
@@ -249,12 +248,8 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   }
   function sortGames(){
     const counts=readGameUsage();
-    let last="";
-    try{last=localStorage.getItem(LAST_GAME_KEY)||"";}catch(_){}
     const options=[...GAME_LIST.querySelectorAll("[data-game]")];
     options.sort((a,b)=>{
-      if(a.dataset.game===last)return -1;
-      if(b.dataset.game===last)return 1;
       const ca=Number(counts[a.dataset.game])||0;
       const cb=Number(counts[b.dataset.game])||0;
       return cb-ca||Number(a.dataset.baseOrder)-Number(b.dataset.baseOrder);
@@ -267,14 +262,13 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     counts[key]=(Number.isSafeInteger(old)&&old>0?old:0)+1;
     try{
       localStorage.setItem(GAME_USAGE_KEY,JSON.stringify(counts));
-      localStorage.setItem(LAST_GAME_KEY,key);
     }catch(_){}
     sortGames();
   }
   [...GAME_LIST.querySelectorAll("[data-game]")].forEach((el,i)=>el.dataset.baseOrder=String(i));
   sortGames();
   window.addEventListener("storage",e=>{
-    if(e.key===GAME_USAGE_KEY||e.key===LAST_GAME_KEY)sortGames();
+    if(e.key===GAME_USAGE_KEY)sortGames();
   });
   const headerFrames=[...document.querySelectorAll(".pane:not(#pane-games) iframe")];
   for(const frame of headerFrames){
