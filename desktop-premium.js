@@ -7,6 +7,7 @@ const APPLICATIONS=[
   {id:"reminder",name:"Υπενθυμίσεις",detail:"Όλες οι υπενθυμίσεις σου"},
   {id:"parking",name:"Parking",detail:"Αποθηκευμένες θέσεις"},
   {id:"kairos",name:"Καιρός",detail:"Πρόγνωση και συνθήκες"},
+  {id:"tvguide",name:"TV Guide",detail:"Τηλεοπτικό πρόγραμμα και ταινίες"},
   {id:"games",name:"Παιχνίδια",detail:"Επιλογή παιχνιδιών"}
 ];
 const ids=APPLICATIONS.map(a=>a.id);
@@ -34,7 +35,7 @@ function loadState(){
   let saved=null;
   try{saved=JSON.parse(localStorage.getItem(storeKey)||"null");}catch(_){}
   if(saved&&typeof saved==="object"){
-    const order=Array.isArray(saved.order)&&saved.order.length===6&&new Set(saved.order).size===6&&ids.every(id=>saved.order.includes(id))?saved.order.slice():ids.slice();
+    const order=Array.isArray(saved.order)?[...new Set([...saved.order.filter(id=>ids.includes(id)),...ids])]:ids.slice();
     return {
       active:ids.includes(saved.active)?saved.active:"douleia",
       overviewCount:[2,4,6].includes(saved.overviewCount)?saved.overviewCount:6,
@@ -45,7 +46,7 @@ function loadState(){
   }
   let previous=null;
   try{previous=JSON.parse(localStorage.getItem(oldStoreKey)||"null");}catch(_){}
-  const order=Array.isArray(previous?.order)&&previous.order.length===6&&new Set(previous.order).size===6&&ids.every(id=>previous.order.includes(id))?previous.order.slice():ids.slice();
+  const order=Array.isArray(previous?.order)?[...new Set([...previous.order.filter(id=>ids.includes(id)),...ids])]:ids.slice();
   return {active:order[0],overviewCount:6,sidebar:"expanded",compact:false,order};
 }
 const state=loadState();
