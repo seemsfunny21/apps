@@ -8,6 +8,7 @@ const APPLICATIONS=[
   {id:"parking",name:"Parking",detail:"Αποθηκευμένες θέσεις"},
   {id:"kairos",name:"Καιρός",detail:"Πρόγνωση και συνθήκες"},
   {id:"tvguide",name:"TV Guide",detail:"Τηλεοπτικό πρόγραμμα και ταινίες"},
+  {id:"predictions",name:"Προβλέψεις",detail:"Παιχνίδι με εικονικές μάρκες"},
   {id:"games",name:"Παιχνίδια",detail:"Επιλογή παιχνιδιών"}
 ];
 const ids=APPLICATIONS.map(a=>a.id);
@@ -173,13 +174,26 @@ function applyCompact(){
 for(const frame of paneFrames){
   frame.addEventListener("load",()=>applyCompactTo(frame));
 }
+function notifyDesktopGameVisibility(){
+  const pane=paneById.games;
+  const active=!pane.hidden&&document.visibilityState==="visible";
+  for(const frame of pane.querySelectorAll("iframe[data-game]")){
+    frame.contentWindow?.postMessage({type:frame.dataset.game+":visibility",active},location.origin);
+  }
+}
+document.addEventListener("visibilitychange",notifyDesktopGameVisibility);
+window.addEventListener("pagehide",()=>{
+  for(const frame of paneById.games.querySelectorAll("iframe[data-game]")){
+    frame.contentWindow?.postMessage({type:frame.dataset.game+":visibility",active:false},location.origin);
+  }
+});
 const gameFrameHost=$("gamesFrame");
 if(gameFrameHost){
   const observer=new MutationObserver(()=>{
     for(const frame of gameFrameHost.querySelectorAll("iframe")){
       if(frame.dataset.desktopPremiumWatch)return;
       frame.dataset.desktopPremiumWatch="1";
-      frame.addEventListener("load",()=>applyCompactTo(frame));
+      frame.addEventListener("load",()=>{applyCompactTo(frame);notifyDesktopGameVisibility();});
       applyCompactTo(frame);
     }
   });
@@ -215,7 +229,7 @@ function render(){
   const collapse=$("desktopCollapse");
   collapse.title=state.sidebar==="collapsed"?"Άνοιγμα μενού":"Σύμπτυξη μενού";
   collapse.setAttribute("aria-label",collapse.title);
-  refreshHeader();applyCompact();save();
+  refreshHeader();applyCompact();notifyDesktopGameVisibility();save();
 }
 function activate(id){
   if(!paneById[id])return;
