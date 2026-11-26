@@ -156,7 +156,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
 <link rel="stylesheet" href="./desktop-games-fit.css?v=1">
 </head>
 <body class="desktop-premium" data-screen="single" data-count="6" data-sidebar="expanded" data-focus="false" data-compact="false">
-<main class="dashboard" aria-label="Έξι εφαρμογές σε μία οθόνη υπολογιστή">
+<main class="dashboard" aria-label="Εφαρμογές σε οθόνη υπολογιστή">
   <p class="desktop-hint">Η προβολή αυτή είναι σχεδιασμένη για υπολογιστή. Για κινητό: <a href="https://seemsfunny21.github.io/applications/">Applications</a>.</p>
   <section class="pane" id="pane-voltes" aria-label="Ποδηλασία">
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.1"/><circle cx="18.5" cy="17.5" r="3.1"/><path d="M5.5 17.5 10 8h5l3.5 9.5M5.5 17.5h9L10 8M9 8h4M15 5.5h2l1 2.5"/></svg></span><span class="pane-name"><strong>Ποδηλασία</strong><small>Ομαδικές διαδρομές</small></span></div><div class="pane-tools">
@@ -197,6 +197,10 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="m7 2 5 4 5-4M9 22h6"/></svg></span><span class="pane-name"><strong>TV Guide</strong><small>Τηλεοπτικό πρόγραμμα</small></span></div><div class="pane-tools"><a class="tool tool-open" href="https://seemsfunny21.github.io/tvguide/" target="_blank" rel="noopener noreferrer" aria-label="Άνοιγμα TV Guide">↗</a><button class="tool tool-zoom" type="button" data-zoom="tvguide" aria-label="Μεγέθυνση TV Guide" aria-pressed="false">⛶</button></div></div>
     <div class="pane-frame"><div class="pane-loading">Φόρτωση TV Guide…</div><iframe loading="lazy" title="TV Guide" src="https://seemsfunny21.github.io/tvguide/"></iframe></div>
   </section>
+  <section class="pane" id="pane-predictions" aria-label="Προβλέψεις">
+    <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="m12 12 9-9"/></svg></span><span class="pane-name"><strong>Προβλέψεις</strong><small>Παιχνίδι με εικονικές μάρκες</small></span></div><div class="pane-tools"><a class="tool tool-open" href="https://seemsfunny21.github.io/predictions/" target="_blank" rel="noopener noreferrer" aria-label="Άνοιγμα Προβλέψεων">↗</a><button class="tool tool-zoom" type="button" data-zoom="predictions" aria-label="Μεγέθυνση Προβλέψεων" aria-pressed="false">⛶</button></div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Προβλέψεων…</div><iframe loading="lazy" title="Προβλέψεις" src="https://seemsfunny21.github.io/predictions/"></iframe></div>
+  </section>
   <section class="pane" id="pane-games" aria-label="Παιχνίδια">
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7.8h10a4 4 0 0 1 3.9 3l1.2 5a2.4 2.4 0 0 1-3.7 2.5L16 16H8l-2.4 2.3A2.4 2.4 0 0 1 2 15.8l1.1-5A4 4 0 0 1 7 7.8Z"/><path d="M7 11v5M4.5 13.5h5M16.5 11.6h.01M19 14h.01"/></svg></span><span class="pane-name"><strong id="gamesTitle">Παιχνίδια</strong><small>Η συλλογή μου</small></span></div><div class="pane-tools">
       <button class="tool is-back" type="button" id="gamesBack" title="Επιστροφή στην επιλογή παιχνιδιών" hidden>Παιχνίδια</button>
@@ -222,6 +226,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
           <button type="button" class="game-choice" data-game="blackjack"><span class="emoji">♠️</span><span class="game-text"><strong>Blackjack</strong><small>Κάρτες</small></span></button>
           <button type="button" class="game-choice" data-game="mahjong"><span class="emoji">🀄</span><span class="game-text"><strong>Mahjong Solitaire</strong><small>Πλακίδια</small></span></button>
           <button type="button" class="game-choice" data-game="flowconnect"><span class="emoji">🔗</span><span class="game-text"><strong>Flow Connect</strong><small>Λογική</small></span></button>
+          <button type="button" class="game-choice" data-game="watersort"><span class="emoji">🧪</span><span class="game-text"><strong>Water Sort</strong><small>Ταξινόμηση χρωμάτων</small></span></button>
           <button type="button" class="game-choice" data-game="puzzle15"><span class="emoji">🔢</span><span class="game-text"><strong>Παζλ 15</strong><small>Αριθμοί</small></span></button>
           <button type="button" class="game-choice" data-game="fallingblocks"><span class="emoji">🧱</span><span class="game-text"><strong>Falling Blocks</strong><small>Arcade</small></span></button>
           <button type="button" class="game-choice" data-game="brickbreaker"><span class="emoji">🏓</span><span class="game-text"><strong>Brick Breaker</strong><small>Arcade</small></span></button>
@@ -258,6 +263,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     blackjack:{name:"Blackjack",url:"https://seemsfunny21.github.io/games/blackjack/"},
     mahjong:{name:"Mahjong Solitaire",url:"https://seemsfunny21.github.io/games/mahjong/"},
     flowconnect:{name:"Flow Connect",url:"https://seemsfunny21.github.io/games/flow-connect/"},
+    watersort:{name:"Water Sort",url:"https://seemsfunny21.github.io/games/water-sort/"},
     puzzle15:{name:"Παζλ 15",url:"https://seemsfunny21.github.io/games/puzzle-15/"},
     fallingblocks:{name:"Falling Blocks",url:"https://seemsfunny21.github.io/games/falling-blocks/"},
     brickbreaker:{name:"Brick Breaker",url:"https://seemsfunny21.github.io/games/brick-breaker/"},
@@ -334,7 +340,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   });
   let gameFrame=null;
   function closeGame(){
-    if(gameFrame){gameFrame.remove();gameFrame=null;}
+    if(gameFrame){gameFrame.contentWindow?.postMessage({type:gameFrame.dataset.game+":visibility",active:false},location.origin);gameFrame.remove();gameFrame=null;}
     sortGames();
     $("gamesPicker").hidden=false;
     $("gamesBack").hidden=true;
@@ -354,11 +360,12 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     $("gamesLoading").hidden=false;
     const frame=document.createElement("iframe");
     frame.className="game-iframe";
+    frame.dataset.game=key;
     frame.title=game.name;
     frame.loading="eager";
     frame.allow="geolocation; camera; microphone; clipboard-read; clipboard-write; fullscreen";
     frame.referrerPolicy="strict-origin-when-cross-origin";
-    frame.addEventListener("load",()=>{$("gamesLoading").hidden=true;},{once:true});
+    frame.addEventListener("load",()=>{if(gameFrame===frame)$("gamesLoading").hidden=true;},{once:true});
     frame.src=game.url;
     $("gamesFrame").append(frame);
     gameFrame=frame;
@@ -370,7 +377,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   $("gamesBack").addEventListener("click",closeGame);
 })();
 </script>
-<script src="./desktop-premium.js?v=4"></script>
+<script src="./desktop-premium.js?v=5"></script>
 <script src="./desktop-adaptive.js?v=5"></script>
 <script src="./desktop-chess-stage.js?v=2"></script>
 <script src="./desktop-games-fit.js?v=1"></script>
