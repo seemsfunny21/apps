@@ -5,9 +5,9 @@ const APPLICATIONS=[
   {id:"douleia",name:"Δρομολόγια",detail:"Οδηγοί, δρομολόγια και στατιστικά"},
   {id:"voltes",name:"Ποδηλασία",detail:"Διαδρομές, μέλη και σέρβις"},
   {id:"reminder",name:"Υπενθυμίσεις",detail:"Όλες οι υπενθυμίσεις σου"},
-  {id:"parking",name:"Parking",detail:"Αποθηκευμένες θέσεις"},
+  {id:"parking",name:"Πάρκινγκ",detail:"Αποθηκευμένες θέσεις"},
   {id:"kairos",name:"Καιρός",detail:"Πρόγνωση και συνθήκες"},
-  {id:"tvguide",name:"TV Guide",detail:"Τηλεοπτικό πρόγραμμα και ταινίες"},
+  {id:"tvguide",name:"Πρόγραμμα τηλεόρασης",detail:"Τηλεοπτικό πρόγραμμα και ταινίες"},
   {id:"predictions",name:"Προβλέψεις",detail:"Παιχνίδι με εικονικές μάρκες"},
   {id:"games",name:"Παιχνίδια",detail:"Επιλογή παιχνιδιών"}
 ];
