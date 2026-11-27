@@ -205,6 +205,14 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9 12 3l9 6v12H3zM7 21V10h10v11M7 14h10M7 17h10"/></svg></span><span class="pane-name"><strong>Αποθήκη</strong><small>Picking και λοιπές εργασίες</small></span></div><div class="pane-tools"><a class="tool tool-open" href="https://seemsfunny21.github.io/Apothiki/?v=9ea2e4c" target="_blank" rel="noopener noreferrer" aria-label="Άνοιγμα Αποθήκης">↗</a><button class="tool tool-zoom" type="button" data-zoom="apothiki" aria-label="Μεγέθυνση Αποθήκης" aria-pressed="false">⛶</button></div></div>
     <div class="pane-frame"><div class="pane-loading">Φόρτωση Αποθήκης…</div><iframe loading="lazy" title="Αποθήκη" src="https://seemsfunny21.github.io/Apothiki/?v=9ea2e4c"></iframe></div>
   </section>
+  <section class="pane" id="pane-adeies" aria-label="Άδειες">
+    <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h18v16H3zM7 3v4M17 3v4M3 10h18M8 14h2M14 14h2M8 18h2"/></svg></span><span class="pane-name"><strong>Άδειες</strong><small>Ημερολόγιο και ιστορικό αδειών</small></span></div><div class="pane-tools"><a class="tool tool-open" href="https://seemsfunny21.github.io/adeies/" target="_blank" rel="noopener noreferrer" aria-label="Άνοιγμα Άδειες">↗</a><button class="tool tool-zoom" type="button" data-zoom="adeies" aria-label="Μεγέθυνση Άδειες" aria-pressed="false">⛶</button></div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Άδειες…</div><iframe loading="lazy" title="Άδειες" src="https://seemsfunny21.github.io/adeies/"></iframe></div>
+  </section>
+  <section class="pane" id="pane-staff" aria-label="Προσωπικό">
+    <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M22 21v-2a4 4 0 0 0-3-3.9M16 3.2a4 4 0 0 1 0 7.6"/></svg></span><span class="pane-name"><strong>Προσωπικό</strong><small>Κοινό μητρώο και ρόλοι</small></span></div><div class="pane-tools"><a class="tool tool-open" href="https://seemsfunny21.github.io/staff/" target="_blank" rel="noopener noreferrer" aria-label="Άνοιγμα Προσωπικό">↗</a><button class="tool tool-zoom" type="button" data-zoom="staff" aria-label="Μεγέθυνση Προσωπικό" aria-pressed="false">⛶</button></div></div>
+    <div class="pane-frame"><div class="pane-loading">Φόρτωση Προσωπικό…</div><iframe loading="lazy" title="Προσωπικό" src="https://seemsfunny21.github.io/staff/"></iframe></div>
+  </section>
   <section class="pane" id="pane-games" aria-label="Παιχνίδια">
     <div class="pane-bar"><div class="pane-label"><span class="pane-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7.8h10a4 4 0 0 1 3.9 3l1.2 5a2.4 2.4 0 0 1-3.7 2.5L16 16H8l-2.4 2.3A2.4 2.4 0 0 1 2 15.8l1.1-5A4 4 0 0 1 7 7.8Z"/><path d="M7 11v5M4.5 13.5h5M16.5 11.6h.01M19 14h.01"/></svg></span><span class="pane-name"><strong id="gamesTitle">Παιχνίδια</strong><small>Η συλλογή μου</small></span></div><div class="pane-tools">
       <button class="tool is-back" type="button" id="gamesBack" title="Επιστροφή στην επιλογή παιχνιδιών" hidden>Παιχνίδια</button>
@@ -381,7 +389,7 @@ button:focus-visible,a:focus-visible{outline:3px solid #b1e5ff;outline-offset:2p
   $("gamesBack").addEventListener("click",closeGame);
 })();
 </script>
-<script src="./desktop-premium.js?v=7"></script>
+<script src="./desktop-premium.js?v=8"></script>
 <script src="./desktop-adaptive.js?v=5"></script>
 <script src="./desktop-chess-stage.js?v=2"></script>
 <script src="./desktop-games-fit.js?v=1"></script>
