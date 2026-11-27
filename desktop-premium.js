@@ -10,6 +10,8 @@ const APPLICATIONS=[
   {id:"tvguide",name:"Πρόγραμμα τηλεόρασης",detail:"Τηλεοπτικό πρόγραμμα και ταινίες"},
   {id:"predictions",name:"Προβλέψεις",detail:"Παιχνίδι με εικονικές μάρκες"},
   {id:"apothiki",name:"Αποθήκη",detail:"Picking και λοιπές εργασίες"},
+  {id:"adeies",name:"Άδειες",detail:"Ημερολόγιο και ιστορικό αδειών"},
+  {id:"staff",name:"Προσωπικό",detail:"Κοινό μητρώο και ρόλοι"},
   {id:"games",name:"Παιχνίδια",detail:"Επιλογή παιχνιδιών"}
 ];
 const ids=APPLICATIONS.map(a=>a.id);
