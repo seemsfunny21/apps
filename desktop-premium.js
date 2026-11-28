@@ -82,7 +82,7 @@ side.innerHTML=[
   '<button type="button" class="desktop-collapse" id="desktopCollapse" title="Σύμπτυξη μενού">',
   '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 6-6 6 6 6M20 4v16"/></svg>',
   '<span class="desktop-nav-text">Σύμπτυξη μενού</span></button>',
-  '<div class="desktop-side-note">Μία εφαρμογή, όλος ο χώρος.<br>Οι υπόλοιπες παραμένουν διαθέσιμες.</div>',
+  '<div class="desktop-side-note" style="text-align:center;letter-spacing:.025em">© '+Math.max(2026,new Date().getFullYear())+' <strong>seemsfunny</strong></div>',
   '</div>'
 ].join("");
 const bar=document.createElement("header");
